@@ -1,0 +1,28 @@
+{
+  "name": "data-visualization",
+  "version": "1.0.0",
+  "description": "Playground for D3",
+  "main": "index.js",
+  "scripts": {
+    "dev": "lite-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jellebrouwer/data-visualization.git"
+  },
+  "keywords": [
+    "D3"
+  ],
+  "author": "Jelle Brouwer",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jellebrouwer/data-visualization/issues"
+  },
+  "homepage": "https://github.com/jellebrouwer/data-visualization#readme",
+  "dependencies": {
+    "d3": "^4"
+  },
+  "devDependencies": {
+    "lite-server": "^2.2.2"
+  }
+}
