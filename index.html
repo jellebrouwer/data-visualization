@@ -1,11 +1,25 @@
-<html>
+<html ng-app="visualizations">
+
 <head>
-    <link rel="stylesheet" type="text/css" href="src/css/style.css">
+	<link rel="stylesheet" type="text/css" href="build/style.css">
 </head>
-<body>
-    <h1>Visualizations</h1>
-    <svg width="960" height="600"></svg>
-    <script src="node_modules/d3/build/d3.js"></script>
-    <script src="src/js/force.js"></script>
+
+<body class="container-fluid">
+
+	<h1>Visualizations</h1>
+
+	<ul class="nav nav-tabs" ng-init="activeTab = 'force'">
+		<li class="nav-item">
+			<a class="nav-link" ng-class="{'active': activeTab === 'force'}" ng-href="/#/force" ng-click="activeTab = 'force'">Force</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" ng-class="{'active': activeTab === 'time'}" ng-href="/#/time" ng-click="activeTab = 'time'">Time</a>
+		</li>
+	</ul>
+
+	<div ng-view></div>
+	<script src="build/vendor.min.js"></script>
+	<script src="build/visualization.min.js"></script>
 </body>
+
 </html>

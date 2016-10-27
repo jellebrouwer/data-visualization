@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "description": "Playground for D3",
   "main": "index.js",
-  "scripts": {
-    "dev": "lite-server"
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jellebrouwer/data-visualization.git"
@@ -20,9 +18,20 @@
   },
   "homepage": "https://github.com/jellebrouwer/data-visualization#readme",
   "dependencies": {
+    "angular": "^1.5.8",
+    "angular-route": "^1.5.8",
+    "bootstrap": "^4.0.0-alpha.5",
     "d3": "^4"
   },
   "devDependencies": {
-    "lite-server": "^2.2.2"
+    "browser-sync": "^2.17.5",
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-batch": "^1.0.5",
+    "gulp-concat": "^2.6.0",
+    "gulp-sass": "^2.3.2",
+    "gulp-sourcemaps": "^2.2.0",
+    "gulp-uglify": "^2.0.0",
+    "gulp-watch": "^4.3.10"
   }
 }
