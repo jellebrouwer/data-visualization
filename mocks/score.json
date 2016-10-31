@@ -2,7 +2,7 @@
     {
         "user": {
             "id": 1,
-            "name": "Jelle Brouwer"
+            "name": "Bobby Fischer"
         },
         "scores": [
             {
@@ -30,7 +30,7 @@
     {
         "user": {
             "id": 2,
-            "name": "John Stolk"
+            "name": "Boris Spassky"
         },
         "scores": [
             {
@@ -58,7 +58,7 @@
     {
         "user": {
             "id": 3,
-            "name": "Inge Dekker"
+            "name": "Garry Kasparov"
         },
         "scores": [
             {

@@ -4,8 +4,10 @@
 	<link rel="stylesheet" type="text/css" href="build/style.css">
 </head>
 
-<body class="container-fluid" ng-controller="RootController as rootCtrl">
-	<h1>Visualizations</h1>
+<body class="container" ng-controller="RootController as rootCtrl">
+	<header class="header">
+		<h1>Visualizations</h1>
+	</header>
 	<ul class="nav nav-tabs">
 		<li class="nav-item">
 			<a class="nav-link" ng-class="{'active': rootCtrl.activeTab === 'force'}" ng-href="/#/force" ng-click="rootCtrl.activeTab = 'force'">Force</a>
