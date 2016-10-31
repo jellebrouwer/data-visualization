@@ -4,19 +4,16 @@
 	<link rel="stylesheet" type="text/css" href="build/style.css">
 </head>
 
-<body class="container-fluid">
-
+<body class="container-fluid" ng-controller="RootController as rootCtrl">
 	<h1>Visualizations</h1>
-
-	<ul class="nav nav-tabs" ng-init="activeTab = 'force'">
+	<ul class="nav nav-tabs">
 		<li class="nav-item">
-			<a class="nav-link" ng-class="{'active': activeTab === 'force'}" ng-href="/#/force" ng-click="activeTab = 'force'">Force</a>
+			<a class="nav-link" ng-class="{'active': rootCtrl.activeTab === 'force'}" ng-href="/#/force" ng-click="rootCtrl.activeTab = 'force'">Force</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" ng-class="{'active': activeTab === 'time'}" ng-href="/#/time" ng-click="activeTab = 'time'">Time</a>
+			<a class="nav-link" ng-class="{'active': rootCtrl.activeTab === 'time'}" ng-href="/#/time" ng-click="rootCtrl.activeTab = 'time'">Time</a>
 		</li>
 	</ul>
-
 	<div ng-view></div>
 	<script src="build/vendor.min.js"></script>
 	<script src="build/visualization.min.js"></script>

@@ -1,15 +1,13 @@
 (function () {
     'use strict';
 
-    angular.module('visualizations', ['ngRoute'])
-        .config(configFn);
+    angular.module('visualizations', ['ngRoute', 'ui.bootstrap'])
+        .config(configFn)
+        .run(runBlock);
 
     function configFn($routeProvider) {
 
         $routeProvider
-            .when('/', {
-                template: '<h2>Home</h2>'
-            })
             .when('/force', {
                 template: '<force></force>'
             })
@@ -20,6 +18,14 @@
     }
 
     configFn.$inject = ['$routeProvider'];
+
+    function runBlock($rootScope, $location) {
+        $rootScope.$on('$routeChangeSuccess', function (e, current, pre) {
+            $rootScope.$broadcast('route-changed', $location.path());
+        });
+    }
+
+    runBlock.$inject = ['$rootScope', '$location'];
 
 
 })();
