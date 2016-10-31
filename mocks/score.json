@@ -1,0 +1,58 @@
+[
+    {
+        "user": {
+            "id": 1,
+            "name": "Jelle Brouwer"
+        },
+        "scores": [
+            {
+                "total": 2,
+                "perfect": 2
+            },
+            {
+                "total": 4,
+                "perfect": 2
+            },
+            {
+                "total": 10,
+                "perfect": 2
+            },
+            {
+                "total": 12,
+                "perfect": 2
+            },
+            {
+                "total": 18,
+                "perfect": 2
+            }
+        ]
+    },
+    {
+        "user": {
+            "id": 2,
+            "name": "John Stolk"
+        },
+        "scores": [
+            {
+                "total": 0,
+                "perfect": 2
+            },
+            {
+                "total": 8,
+                "perfect": 2
+            },
+            {
+                "total": 9,
+                "perfect": 2
+            },
+            {
+                "total": 10,
+                "perfect": 2
+            },
+            {
+                "total": 12,
+                "perfect": 2
+            }
+        ]
+    }
+]
