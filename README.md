@@ -1,7 +1,4 @@
 # Data visualization
 
 ## Development
-```node
-npm install
-npm run dev
-```
+Run `npm install` and `gulp serve`.
