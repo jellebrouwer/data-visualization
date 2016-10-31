@@ -1,3 +1,7 @@
-# data-visualization
-```npm install
-npm run dev```
+# Data visualization
+
+## Development
+```node
+npm install
+npm run dev
+```
