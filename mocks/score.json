@@ -54,5 +54,33 @@
                 "perfect": 2
             }
         ]
+    },
+    {
+        "user": {
+            "id": 3,
+            "name": "Inge Dekker"
+        },
+        "scores": [
+            {
+                "total": 3,
+                "perfect": 2
+            },
+            {
+                "total": 3,
+                "perfect": 2
+            },
+            {
+                "total": 5,
+                "perfect": 2
+            },
+            {
+                "total": 7,
+                "perfect": 2
+            },
+            {
+                "total": 8,
+                "perfect": 2
+            }
+        ]
     }
 ]

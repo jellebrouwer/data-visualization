@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('visualizations', ['ngRoute', 'ui.bootstrap'])
+    angular.module('visualizations', ['ngRoute'])
         .config(configFn)
         .run(runBlock);
 
@@ -14,7 +14,7 @@
             .when('/time', {
                 template: '<time></time>'
             })
-            .otherwise('/');
+            .otherwise('/force');
     }
 
     configFn.$inject = ['$routeProvider'];
