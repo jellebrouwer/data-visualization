@@ -9,7 +9,7 @@
 
         $routeProvider
             .when('/force', {
-                template: '<force></force>'
+                template: '<force config="rootCtrl.config"></force>'
             })
             .when('/time', {
                 template: '<time></time>'

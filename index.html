@@ -17,6 +17,7 @@
 		</li>
 	</ul>
 	<div ng-view></div>
+	<force-settings config="rootCtrl.config" on-config-change="rootCtrl.renderForceDiagram(config)"></force-settings>
 	<script src="build/vendor.min.js"></script>
 	<script src="build/visualization.min.js"></script>
 </body>

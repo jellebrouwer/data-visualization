@@ -4,71 +4,93 @@
     angular
         .module('visualizations')
         .component('force', {
-            template: '<svg width="960" height="600"></svg>',
+            templateUrl: 'src/js/components/force/force.html',
             controller: ForceController,
-            bindings: {},
+            controllerAs: 'forceCtrl',
+            bindings: {
+                config: '<'
+            }
         });
 
 
     function ForceController() {
         var $ctrl = this;
+        var svg, width, height, color, simulation;
 
-        var svg = d3.select("svg"),
-            width = +svg.attr("width"),
+        function init() {
+            svg = d3.select("svg");
+            width = +svg.attr("width");
             height = +svg.attr("height");
+            color = d3.scaleOrdinal(d3.schemeCategory20);
 
-        var color = d3.scaleOrdinal(d3.schemeCategory20);
+            simulation = d3.forceSimulation()
+                .force("link", d3.forceLink().id(function (d) { return d.id; }))
+                .force("charge", d3.forceManyBody())
+                .force("center", d3.forceCenter(width / 2, height / 2));
+        }
 
-        var simulation = d3.forceSimulation()
-            .force("link", d3.forceLink().id(function (d) { return d.id; }))
-            .force("charge", d3.forceManyBody())
-            .force("center", d3.forceCenter(width / 2, height / 2));
 
-        d3.json("mocks/data.json", function (error, graph) {
+        function getNetworkData() {
+            d3.json("mocks/data.json", function (error, graph) {
 
-            if (error) throw error;
+                if (error) throw error;
 
-            var link = svg.append("g")
-                .attr("class", "links")
-                .selectAll("line")
-                .data(graph.links)
-                .enter().append("line")
-                .attr("stroke-width", function (d) { return Math.sqrt(d.value); });
+                var link = svg.append("g")
+                    .attr("class", "links")
+                    .selectAll("line")
+                    .data(graph.links)
+                    .enter().append("line")
+                    .attr("stroke-width", function (d) { return Math.sqrt(d.value); });
 
-            var node = svg.append("g")
-                .attr("class", "nodes")
-                .selectAll("circle")
-                .data(graph.nodes)
-                .enter().append("circle")
-                .attr("r", 5)
-                .attr("fill", function (d) { return color(d.group); })
-                .call(d3.drag()
-                    .on("start", dragstarted)
-                    .on("drag", dragged)
-                    .on("end", dragended));
+                var node = svg.append("g")
+                    .attr("class", "nodes")
+                    .selectAll("circle")
+                    .data(graph.nodes)
+                    .enter().append("circle")
+                    .attr("r", $ctrl.config.radius)
+                    .attr("fill", function (d) { return color(d.group); })
+                    .call(d3.drag()
+                        .on("start", dragstarted)
+                        .on("drag", dragged)
+                        .on("end", dragended));
 
-            node.append("title")
-                .text(function (d) { return d.id; });
+                node.append("title")
+                    .text(function (d) { return d.id; });
 
-            simulation
-                .nodes(graph.nodes)
-                .on("tick", ticked);
+                node.append("text")
+                    .attr('class', 'label')
+                    .attr("dx", 12)
+                    .attr("dy", ".35em")
+                    .text(function (d) { return d.id });
 
-            simulation.force("link")
-                .links(graph.links);
 
-            function ticked() {
-                link
-                    .attr("x1", function (d) { return d.source.x; })
-                    .attr("y1", function (d) { return d.source.y; })
-                    .attr("x2", function (d) { return d.target.x; })
-                    .attr("y2", function (d) { return d.target.y; });
+                simulation
+                    .nodes(graph.nodes)
+                    .on("tick", ticked);
 
-                node
-                    .attr("cx", function (d) { return d.x; })
-                    .attr("cy", function (d) { return d.y; });
+                simulation.force("link")
+                    .links(graph.links);
+
+                function ticked() {
+                    link
+                        .attr("x1", function (d) { return d.source.x; })
+                        .attr("y1", function (d) { return d.source.y; })
+                        .attr("x2", function (d) { return d.target.x; })
+                        .attr("y2", function (d) { return d.target.y; });
+
+                    node
+                        .attr("cx", function (d) { return d.x; })
+                        .attr("cy", function (d) { return d.y; });
+                }
+            });
+        }
+
+        function setRadius() {
+            if (svg) {
+                svg.selectAll("circle")
+                    .attr("r", $ctrl.config.radius);
             }
-        });
+        }
 
         function dragstarted(d) {
             if (!d3.event.active) simulation.alphaTarget(0.3).restart();
@@ -85,9 +107,19 @@
             if (!d3.event.active) simulation.alphaTarget(0);
         }
 
-        $ctrl.$onInit = function () { };
-        $ctrl.$onChanges = function (changesObj) { };
-        $ctrl.$onDestory = function () { };
+        $ctrl.$onInit = function () {
+            init();
+            getNetworkData();
+        };
+
+        $ctrl.$onChanges = function (bindings) {
+            console.log(bindings);
+            setRadius();
+        };
+
+        $ctrl.$onDestory = function () {
+
+        };
     }
 
 })();
