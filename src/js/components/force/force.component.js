@@ -3,19 +3,27 @@
 
     angular
         .module('visualizations')
-        .component('force', {
+        .directive('force', force)
+
+    function force() {
+        return {
             templateUrl: 'src/js/components/force/force.html',
             controller: ForceController,
             controllerAs: 'forceCtrl',
-            bindings: {
+            bindToController: {
                 config: '<'
-            }
-        });
+            },
+            link: link
+        }
+    }
 
+    function link(scope, element, attrs) {
+        var dimensions = element[0].getBoundingClientRect();
+    }
 
     function ForceController() {
         var $ctrl = this;
-        var svg, width, height, color, simulation;
+        var svg = d3.select("svg"), width, height, color, simulation;
 
         function init() {
             svg = d3.select("svg");
@@ -28,7 +36,6 @@
                 .force("charge", d3.forceManyBody())
                 .force("center", d3.forceCenter(width / 2, height / 2));
         }
-
 
         function getNetworkData() {
             d3.json("mocks/data.json", function (error, graph) {
@@ -47,7 +54,7 @@
                     .selectAll("circle")
                     .data(graph.nodes)
                     .enter().append("circle")
-                    .attr("r", $ctrl.config.radius)
+                    .attr("r", function () { return Math.random() * $ctrl.config.radius })
                     .attr("fill", function (d) { return color(d.group); })
                     .call(d3.drag()
                         .on("start", dragstarted)
@@ -57,12 +64,12 @@
                 node.append("title")
                     .text(function (d) { return d.id; });
 
-                node.append("text")
-                    .attr('class', 'label')
-                    .attr("dx", 12)
-                    .attr("dy", ".35em")
+                var label = svg.append("g")
+                    .attr("class", "labels")
+                    .selectAll("text")
+                    .data(graph.nodes)
+                    .enter().append("text")
                     .text(function (d) { return d.id });
-
 
                 simulation
                     .nodes(graph.nodes)
@@ -71,6 +78,7 @@
                 simulation.force("link")
                     .links(graph.links);
 
+                // Add coordinates to elements
                 function ticked() {
                     link
                         .attr("x1", function (d) { return d.source.x; })
@@ -81,6 +89,10 @@
                     node
                         .attr("cx", function (d) { return d.x; })
                         .attr("cy", function (d) { return d.y; });
+
+                    label
+                        .attr("dx", function (d) { return d.x + 10; })
+                        .attr("dy", function (d) { return d.y - 10; });
                 }
             });
         }
@@ -113,7 +125,6 @@
         };
 
         $ctrl.$onChanges = function (bindings) {
-            console.log(bindings);
             setRadius();
         };
 
