@@ -10,7 +10,8 @@ var del = require('del');
 var vendor = [
     'node_modules/angular/angular.js',
     'node_modules/angular-route/angular-route.js',
-    'node_modules/d3/build/d3.js'
+    'node_modules/d3/build/d3.js',
+    'node_modules/topojson/dist/topojson.js'
 ];
 var app = [
     'src/js/app.js',

@@ -14,6 +14,9 @@
             .when('/time', {
                 template: '<time></time>'
             })
+            .when('/map', {
+                template: '<map></map>'
+            })
             .otherwise('/force');
     }
 

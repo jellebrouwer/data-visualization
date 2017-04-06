@@ -147,7 +147,7 @@
             setRadius();
         };
 
-        $ctrl.$onDestory = function () {
+        $ctrl.$onDestroy = function () {
 
         };
     }
