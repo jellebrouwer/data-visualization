@@ -8,7 +8,6 @@
 
     function worldMap() {
         return {
-            templateUrl: 'src/js/components/map/map.html',
             controller: MapController,
             controllerAs: 'mapCtrl',
             bindToController: {
@@ -21,7 +20,7 @@
     function link(scope, element, attrs, $ctrl) {
 
         var width = 1000,
-            height = 1100,
+            height = 1000,
             // SVG element as a JavaScript object that we can manipulate later
             svg = d3.select(element[0]).append("svg")
                 .attr("id", "map")
@@ -57,13 +56,31 @@
                         return projection([d.lon, d.lat])[1];
                     })
                     .attr("r", function (d) {
-                        console.log(d);
+                        console.log(d, width);
+                        console.log('x: ' + getPixelsX(parseInt(d.lon, 10), width));
+                        console.log('y: ' + getPixelsY(parseInt(d.lat, 10), { width: width, height: height }));
 
                         return d.average * 3;
                     })
                     .style("fill", "red");
             });
-        })
+
+        });
+
+        // From latitude/longitude coordinates to pixel coordinates for given map dimension
+
+        function getPixelsX(longitude, mapWidth) {
+            return (longitude + 180) * (mapWidth / 360);
+        }
+
+        function getPixelsY(latitude, mapDimension) {
+            var latRad = latitude * Math.PI / 180;
+            var mercN = Math.log(Math.tan(Math.PI / 4) + (latRad / 2));
+
+            return (mapDimension.height / 2) - (mapDimension.width * mercN / (2 * Math.PI));
+        }
+
+
 
 
     }
