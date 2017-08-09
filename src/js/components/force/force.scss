@@ -8,3 +8,17 @@
   stroke: #fff;
   stroke-width: 1.5px;
 }
+
+.monster {
+
+  &__path {
+    fill: green;
+
+    &:hover {
+      cursor: pointer;
+      fill: red;
+    }
+
+  }
+
+}
