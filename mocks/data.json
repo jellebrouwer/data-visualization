@@ -3,104 +3,111 @@
     {
       "id": "Martin",
       "employer": "Codezilla",
-      "group": 1
+      "imageSource": "martinmonster.svg"
     },
     {
       "id": "Huib",
       "employer": "bol.com",
-      "group": 1
+      "imageSource": "huibmonster.svg"
     },
     {
       "id": "Rory",
       "employer": "Ahold",
-      "group": 1
+      "imageSource": "rorymonster.svg"
     },
     {
       "id": "Jelle Brouwer",
       "employer": "NATO",
-      "group": 1
+      "imageSource": "jellemonster.svg"
     },
     {
       "id": "Arno",
       "employer": "Rabobank",
-      "group": 1
+      "imageSource": "arnomonster.svg"
     },
     {
       "id": "Michel",
       "employer": "SNS Bank",
-      "group": 1
+      "imageSource": "michelmonster.svg"
     },
     {
       "id": "Jelle",
       "employer": "KLM",
-      "group": 1
+      "imageSource": "jellemonster.svg"
     },
     {
       "id": "Nico",
       "employer": "Rabobank",
-      "group": 1
+      "imageSource": "nicomonster.svg"
     },
     {
       "id": "Remy",
       "employer": "Nuon",
-      "group": 1
+      "imageSource": "remymonster.svg"
     },
     {
       "id": "Patrick",
       "employer": "Rabobank",
-      "group": 1
+      "imageSource": "patrickmonster.svg"
     },
     {
       "id": "Ming",
       "employer": "Rabobank",
-      "group": 2
+      "imageSource": "mingmonster.svg"
     },
     {
-      "id": "Tjnin",
+      "id": "Tjin",
       "employer": "Rabobank",
-      "group": 2
+      "imageSource": "tjinmonster.svg"
     },
     {
       "id": "Jeroen",
       "employer": "SNS Bank",
-      "group": 3
+      "imageSource": "jeroenmonster.svg"
     },
     {
       "id": "Bas",
       "employer": "Rabobank",
-      "group": 2
+      "imageSource": "basmonster.svg"
     },
     {
       "id": "Joran",
       "employer": "Rabobank",
-      "group": 2
+      "imageSource": "joranmonster.svg"
     }
   ],
   "employers": [
     {
-      "id": "Codezilla"
+      "id": "Codezilla",
+      "imageSource": "codezilla.svg"
     },
     {
       "id": "SNS Bank",
-      "group": 2
+      "imageSource": "sns.jpg"
     },
     {
-      "id": "Rabobank"
+      "id": "Rabobank",
+      "imageSource": "rabobank.png"
     },
     {
-      "id": "KLM"
+      "id": "KLM",
+      "imageSource": "klm.png"
     },
     {
-      "id": "Ahold"
+      "id": "Ahold",
+      "imageSource": "ahold.svg"
     },
     {
-      "id": "Nuon"
+      "id": "Nuon",
+      "imageSource": "nuon.svg"
     },
     {
-      "id": "bol.com"
+      "id": "bol.com",
+      "imageSource": "bol.svg"
     },
     {
-      "id": "NATO"
+      "id": "NATO",
+      "imageSource": "ncia.png"
     }
   ]
 }
